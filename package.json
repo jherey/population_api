@@ -4,7 +4,8 @@
   "description": "Population Management System",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "./node_modules/.bin/tsc",
+    "compile-watch": "npm run tsc -w"
   },
   "author": "Jeremiah Olufayo",
   "license": "ISC",
@@ -18,5 +19,8 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.17.2"
+  },
+  "dependencies": {
+    "typescript": "^3.4.3"
   }
 }
