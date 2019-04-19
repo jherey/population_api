@@ -44,9 +44,12 @@ You should now be able to access the API via http://localhost:2300/api/
 Some things to note about the project
 
 - It uses Typescript to ensure type safety.
-- The `typings` folder holds custom Typscript type defintions.
+- The `typings` folder holds custom Typscript type definitions.
 
 ## API Endpoints
 
 <table>
 <tr><th>HTTP VERB</th><th>ENDPOINTS</th><th>DESCRIPTION</th></tr>
+
+## Contributions
+We welcome contributions, what are you waiting for? Raise a Pull Request!! 😁
