@@ -35,12 +35,13 @@ export default class BaseRepository<T extends Document> implements IRepository<T
   async paginate(query: Query<any>, options: PaginationOptions): Promise<PaginatedModels<T>> {
     try {
       const { limit, page } = options;
+      const perPage = Number(limit);
       const total = await this.model.count(query);
-      const offset = limit * (page - 1);
-      const pages = Math.ceil(total / limit);
-      const docs = await query.skip(offset).limit(limit).exec();
+      const offset = perPage * (page - 1);
+      const pages = Math.ceil(total / perPage);
+      const docs = await query.skip(offset).limit(perPage).exec();
 
-      return { total, perPage: limit, page, pages, docs };
+      return { docs, total, perPage, page, pages };
     } catch (error) {
       throw error;
     }
@@ -54,7 +55,7 @@ export default class BaseRepository<T extends Document> implements IRepository<T
    */
   async findAll(query: any, options: QueryOptions): Promise<T[] | PaginatedModels<T>> {
     try {
-      const { select, populate, limit, page = 1 } = options;
+      const { select, populate = '', limit, page = 1 } = options;
       const queryExec = this.model.find(query).populate(populate);
 
       queryExec.select(select);
