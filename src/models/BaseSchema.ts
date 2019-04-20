@@ -1,9 +1,6 @@
 import { Schema, SchemaDefinition, SchemaOptions } from 'mongoose';
 
 class BaseSchema extends Schema {
-  /**
-   * Base Schema
-   */
   constructor(definitions?: SchemaDefinition, schemaOptions?: SchemaOptions) {
     const defaultDefinition: SchemaDefinition = {
       createdAt: { type: Date, default: Date.now },
