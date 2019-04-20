@@ -4,9 +4,6 @@ import server from './app';
 import { connectToDatabase } from './utils/db';
 import logger from './utils/logger';
 
-// Get the port to listen on
-const port = process.env.PORT || 2300;
-
 const connectionUrl: string = config.env === 'test'
   ? config.db.test : config.db.dev;
 
@@ -34,5 +31,10 @@ process.on('SIGINT', () => {
   logger.info(`Server successfully shutdown at ${Date.now()}`);
   process.exit(1);
 });
+
+process.on('uncaughtException', err => {
+    logger.error('There was an uncaught error', err);
+    process.exit(1);
+  });
 
 connectToDatabase(connectionUrl);
