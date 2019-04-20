@@ -63,6 +63,7 @@ Some things to note about the project
 <table>
 <tr><th>HTTP VERB</th><th>ENDPOINTS</th><th>DESCRIPTION</th></tr>
 <tr><td>POST</td><td>/api/locations</td><td>Creates a new location</td></tr>
+<tr><td>GET</td><td>/api/locations</td><td>Returns available locations</td></tr>
 
 ## Contributions
 
