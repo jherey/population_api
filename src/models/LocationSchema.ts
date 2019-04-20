@@ -1,5 +1,5 @@
 import BaseSchema from './BaseSchema';
-import { Document } from 'mongoose';
+import { Document, SchemaTypes } from 'mongoose';
 import { COMMON_SCHEMAS } from './common';
 
 export interface Location extends Document {
@@ -14,6 +14,7 @@ const locationSchema = new BaseSchema({
   male: COMMON_SCHEMAS.REQUIRED_NUMBER,
   female: COMMON_SCHEMAS.REQUIRED_NUMBER,
   totalPopulation: COMMON_SCHEMAS.REQUIRED_NUMBER,
+  subLocations: [SchemaTypes.String]
 });
 
 export default locationSchema;

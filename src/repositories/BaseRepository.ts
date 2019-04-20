@@ -100,6 +100,24 @@ export default class BaseRepository<T extends Document> implements IRepository<T
   }
 
   /**
+   * @description Adds a string to an array
+   * @param {object} query
+   * @param {string} fieldToPushTo
+   * @param {string} value
+   * @returns {Document} Updated document
+   */
+   async pushToArray(query: any, fieldToPushTo: string, value: string): Promise<T> {
+    try {
+      const document = await this.model
+        .findOneAndUpdate(query, { $addToSet: { [fieldToPushTo]: value } }, { new: true });
+      if (!document) throw new Error(`${this.name} not found`);
+      return document;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  /**
    * @description Delete a document by id
    * @param {number} id
    * @returns {Document} Deleted document
