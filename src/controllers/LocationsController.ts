@@ -10,6 +10,16 @@ class LocationsController {
       return res.status(500).json(error);
     }
   }
+
+  static async listLocations(req: Request, res: Response) {
+    try {
+      const { limit, page } = req.query;
+      const locations = await LocationService.getAllLocations({ limit, page });
+      return res.status(200).json(locations);
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  }
 }
 
 export default LocationsController;
