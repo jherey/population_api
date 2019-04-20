@@ -7,12 +7,18 @@ This API creates a Population Management System that contains a list of location
 The project structure follows the **MVC** (Model-View-Controller) pattern. You can think of the **JSON** representation of data returned by the API as the 'view'.
 ```
 ├── src/
+    ├── controllers
+        ├── LocationsController.ts
+    ├── middlewares
+        ├── validateUserInputs.ts
     ├── models
         ├── BaseSchema.ts
     ├── repositories
         ├── BaseRepository.ts
     ├── routers
         ├── index.ts
+    ├── services
+        ├── LocationService.ts
     ├── utils
         ├── db.ts
         ├── logger.ts
@@ -56,6 +62,7 @@ Some things to note about the project
 
 <table>
 <tr><th>HTTP VERB</th><th>ENDPOINTS</th><th>DESCRIPTION</th></tr>
+<tr><td>POST</td><td>/api/locations</td><td>Creates a new location</td></tr>
 
 ## Contributions
 
