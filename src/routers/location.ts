@@ -8,4 +8,7 @@ router.post('/',
   createLocation,
   LocationsController.createLocation);
 
+router.get('/',
+  LocationsController.listLocations);
+
 export default router;
