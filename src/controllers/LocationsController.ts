@@ -7,7 +7,7 @@ class LocationsController {
       const newLocation = await LocationService.saveNewLocation(req.body);
       return res.status(201).json({ message: 'New location created', newLocation });
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(500).json({ error: error.message });
     }
   }
 
@@ -17,7 +17,7 @@ class LocationsController {
       const locations = await LocationService.getAllLocations({ limit, page });
       return res.status(200).json(locations);
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(500).json({ error: error.message });
     }
   }
 
@@ -27,7 +27,17 @@ class LocationsController {
       const updatedLocation = await LocationService.updateALocation(id, req.body);
       return res.status(200).json({ updatedLocation });
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(500).json({ error: error.message });
+    }
+  }
+
+  static async deleteLocation(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      await LocationService.deleteALocation(id);
+      return res.status(200).json({ message: 'Location deleted' });
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
     }
   }
 }
