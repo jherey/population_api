@@ -120,7 +120,7 @@ export default class BaseRepository<T extends Document> implements IRepository<T
 
   /**
    * @description Delete a document by id
-   * @param {number} id
+   * @param {string} id
    * @returns {Document} Deleted document
    */
   async delete(id: string) {

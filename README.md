@@ -64,6 +64,8 @@ Some things to note about the project
 <tr><th>HTTP VERB</th><th>ENDPOINTS</th><th>DESCRIPTION</th></tr>
 <tr><td>POST</td><td>/api/locations</td><td>Creates a new location</td></tr>
 <tr><td>GET</td><td>/api/locations</td><td>Returns available locations</td></tr>
+<tr><td>PUT</td><td>/api/locations/:id</td><td>Updates a location</td></tr>
+<tr><td>DELETE</td><td>/api/locations/:id</td><td>Deletes a location</td></tr>
 
 ## Contributions
 
