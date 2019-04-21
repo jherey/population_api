@@ -1,4 +1,4 @@
-import { Model, model, Schema, Document, Query, PaginateModel } from 'mongoose';
+import { Model, model, Schema, Document, Query } from 'mongoose';
 import { QueryOptions, IRepository, PaginationOptions, PaginatedModels } from './interfaces';
 import mongoosePaginate from 'mongoose-paginate';
 
