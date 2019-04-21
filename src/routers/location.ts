@@ -17,4 +17,7 @@ router.put('/:id',
   validLocation,
   LocationsController.updateLocation);
 
+router.delete('/:id',
+  validLocation,
+  LocationsController.deleteLocation);
 export default router;
