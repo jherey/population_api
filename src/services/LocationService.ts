@@ -39,4 +39,12 @@ export default class LocationService {
       throw error;
     }
   }
+
+  static async deleteALocation(id: string) {
+    try {
+      await locationRepository.delete(id);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
