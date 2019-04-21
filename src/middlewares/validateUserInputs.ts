@@ -20,3 +20,13 @@ export const createLocation = (req: Request, res: Response, next: any): Response
 
   return validationErrorHandler(req, res, next);
 };
+
+export const updateLocation = (req: Request, res: Response, next: any): Response => {
+  req.check('id', 'Location ID is not a valid MongoID').isMongoId();
+  req.checkBody('location', 'Location is required').optional().isString();
+  req.checkBody('male', 'Male value should be numeric').optional().isNumeric();
+  req.checkBody('female', 'Female value should be numeric').optional().isNumeric();
+  req.checkBody('subLocations', 'Sub locations should be an array').optional().isArray();
+
+  return validationErrorHandler(req, res, next);
+};
