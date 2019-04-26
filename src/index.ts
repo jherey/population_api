@@ -1,11 +1,6 @@
-import config from './utils/config';
 import Mongoose from 'mongoose';
 import server from './app';
-import { connectToDatabase } from './utils/db';
 import logger from './utils/logger';
-
-const connectionUrl: string = config.env === 'test'
-  ? config.db.test : config.db.dev;
 
 Mongoose.connection
   .on('connecting', () => logger.info('Connecting to database'))
@@ -20,10 +15,9 @@ Mongoose.connection
     logger.error(`Database error ${error.message}`);
   });
 
-server
-  .on('error', (error: Error) => {
-    logger.error(`${error.message}: ${error.stack}`);
-  });
+server.on('error', (error: Error) => {
+  logger.error(`${error.message}: ${error.stack}`);
+});
 
 process.on('SIGINT', () => {
   logger.warn('Shutting down server...');
@@ -33,8 +27,6 @@ process.on('SIGINT', () => {
 });
 
 process.on('uncaughtException', err => {
-    logger.error('There was an uncaught error', err);
-    process.exit(1);
-  });
-
-connectToDatabase(connectionUrl);
+  logger.error('There was an uncaught error', err);
+  process.exit(1);
+});

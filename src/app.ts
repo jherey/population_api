@@ -6,6 +6,7 @@ import requestLogger from 'morgan';
 import cors from 'cors';
 import expressValidator from 'express-validator';
 import routes from './routers';
+import { connectToDatabase } from './utils/db';
 
 // Set up the express app
 const app: express.Application = express();
@@ -31,6 +32,12 @@ app.use('*', (req, res, next) => {
   });
   next();
 });
+
+const connectionUrl: string = config.env === 'test'
+  ? config.db.test : config.db.dev;
+
+// connect to database
+connectToDatabase(connectionUrl);
 
 const server = app.listen(config.port, () => {
   logger.info(`Server listening on port ${config.port} 🔥`);

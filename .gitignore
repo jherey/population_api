@@ -5,3 +5,5 @@
 population-api.log
 
 dist
+
+coverage

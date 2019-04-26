@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import LocationService from '../services/LocationService';
+import { validatePayload } from '../helpers/validatePayload';
 
 class LocationsController {
   static async createLocation(req: Request, res: Response) {
@@ -24,6 +25,7 @@ class LocationsController {
   static async updateLocation(req: Request, res: Response) {
     try {
       const { id } = req.params;
+      await validatePayload(req.body);
       const updatedLocation = await LocationService.updateALocation(id, req.body);
       return res.status(200).json({ updatedLocation });
     } catch (error) {

@@ -1,13 +1,11 @@
 import { Model, model, Schema, Document, Query } from 'mongoose';
 import { QueryOptions, IRepository, PaginationOptions, PaginatedModels } from './interfaces';
-import mongoosePaginate from 'mongoose-paginate';
 
 export default class BaseRepository<T extends Document> implements IRepository<T> {
   private name: string;
   protected model: Model<T>;
 
   constructor(name: string, schema: Schema) {
-    schema.plugin(mongoosePaginate);
     this.name = name;
     this.model = model<T>(this.name, schema);
   }
