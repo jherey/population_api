@@ -9,6 +9,8 @@ The project structure follows the **MVC** (Model-View-Controller) pattern. You c
 ├── src/
     ├── controllers
         ├── LocationsController.ts
+    ├── helpers
+        ├── validatePayload.ts
     ├── middlewares
         ├── validateUserInputs.ts
     ├── models
@@ -19,6 +21,8 @@ The project structure follows the **MVC** (Model-View-Controller) pattern. You c
         ├── index.ts
     ├── services
         ├── LocationService.ts
+    ├── tests
+        ├── home.spec.ts
     ├── utils
         ├── db.ts
         ├── logger.ts
@@ -42,7 +46,7 @@ The project structure follows the **MVC** (Model-View-Controller) pattern. You c
 $ git clone https://github.com/jherey/population_api.git
 $ cd population_api
 $ npm install
-$ npm dev                     # For development purpose
+$ npm run dev                 # For development purpose
 $ npm start                   # To run production build
 ```
 
@@ -66,6 +70,12 @@ Some things to note about the project
 <tr><td>GET</td><td>/api/locations</td><td>Returns available locations</td></tr>
 <tr><td>PUT</td><td>/api/locations/:id</td><td>Updates a location</td></tr>
 <tr><td>DELETE</td><td>/api/locations/:id</td><td>Deletes a location</td></tr>
+</table>
+
+## Testing
+
+* [Jest](https://jestjs.io/)
+* [Supertest](https://www.npmjs.com/package/supertest)
 
 ## Contributions
 
